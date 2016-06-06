@@ -55,6 +55,11 @@ public class RequeteAdminMaj extends HttpServlet {
             request.setAttribute("erreur", erreur);
             this.getServletContext().getRequestDispatcher("/erreur.jsp").forward(request, response);
         }
+        if(note<0 || note>20){
+            erreur = "Erreur - erreur note.";
+            request.setAttribute("erreur", erreur);
+            this.getServletContext().getRequestDispatcher("/erreur.jsp").forward(request, response);
+        }
         int result=OK;
 
         Requetes req;
@@ -63,19 +68,25 @@ public class RequeteAdminMaj extends HttpServlet {
        if(result==OK){
             try {
                 req.modifEtu();
+                
             } catch (SQLException ex) {
                 result=ERROR;
                erreur="upade err";
+               
             }
        }
+       Etudiant etudiant = req.getEtu();
       //modif
             if (result != OK) {
 
                 request.setAttribute("erreur", erreur);
                 this.getServletContext().getRequestDispatcher("/erreur.jsp").forward(request, response);
             }else {
+                request.setAttribute("etudiant", etudiant);
+                request.setAttribute("matiere", req.getMatiere());
+                request.setAttribute("moyenne", req.getMoyenne());
                 request.setAttribute("laListe", laListe);
-                this.getServletContext().getRequestDispatcher("/resultatAdmin.jsp").forward(request, response);
+                this.getServletContext().getRequestDispatcher("/resultat.jsp").forward(request, response);
             }
         
        
