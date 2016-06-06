@@ -73,7 +73,7 @@ public class RequeteAdmin extends HttpServlet {
             } catch (Exception e) {
                 System.out.println("Erreur: " + e.getMessage());
             }
-            
+        }
            
             if(laListe.isEmpty()){
                 result=ERROR;
@@ -84,12 +84,11 @@ public class RequeteAdmin extends HttpServlet {
                
                 request.setAttribute("erreur", erreur);
                 this.getServletContext().getRequestDispatcher("/erreur.jsp").forward(request, response);
-            }
-            else {
+            }else {
                 request.setAttribute("etudiant", laListe);
                 this.getServletContext().getRequestDispatcher("/resultatAdmin.jsp").forward(request, response);
             }
-        }
+        
         } catch (Exception ex) {
             Logger.getLogger(RequeteNotes.class.getName()).log(Level.SEVERE, null, ex);
         }
