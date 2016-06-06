@@ -48,3 +48,4 @@ Temporary Items
 nbproject/build-impl.xml~
 *.xml
 *.properties
+/dist/

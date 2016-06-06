@@ -8,7 +8,7 @@
     </head>
     <body>
         <div>
-            <form method="get" action="RequeteAdmin">
+            <form method="get" action="RequeteAdminMaj">
                 <fieldset>
                     <legend>Informations étudiant</legend>
     

@@ -91,6 +91,15 @@ public class DaoJava {
         
        return laListe;
    }
+     public void modifNote(Etudiant etu) throws SQLException{
+         String requete = "Update JAVA_WEB_G2S3 set note=? where upper(nom)=? and upper(prenom)=?"  ;
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+         pstmt.setString(2, etu.getNom().toUpperCase());
+        pstmt.setString(3, etu.getPrenom().toUpperCase());
+        pstmt.setDouble(1, etu.getNote());
+        pstmt.executeUpdate();
+        pstmt.close();
+     }
      public int getCount()throws SQLException{
           int nb=0;
          String requete = "select count(nom) from JAVA_WEB_G2S3"  ;
@@ -125,4 +134,5 @@ public class DaoJava {
         pstmt.close();
         return temp;
     }
+     
 }

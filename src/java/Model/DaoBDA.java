@@ -127,4 +127,15 @@ public class DaoBDA {
         pstmt.close();
            return temp;
     }
+     public void modifNote(Etudiant etu) throws SQLException{
+         System.out.println(etu);
+         String requete = "Update BDA_G2S3 set note=? where upper(nom)=? and upper(prenom)=?"  ;
+        PreparedStatement pstmt = connexion.prepareStatement(requete);
+         pstmt.setString(2, etu.getNom().toUpperCase());
+        pstmt.setString(3, etu.getPrenom().toUpperCase());
+        pstmt.setDouble(1, etu.getNote());
+        pstmt.executeUpdate();
+        
+        pstmt.close();
+     }
 }

@@ -54,6 +54,19 @@ public class Requetes {
             System.out.println("Erreur: " + e.getMessage());
         }
     }
+     public Requetes(String nom, String prenom, String matiere, double note) {
+        etu = new Etudiant(nom, prenom, note); // en entrée
+        Requetes.matiere = matiere;
+        erreur_matiere = false;
+
+        try {
+
+            daoJava = new DaoJava(SourceOracleDAO.getSource());
+            daoBD = new DaoBDA(SourceOracleDAO.getSource());
+        } catch (SQLException e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+    }
 
     public Etudiant getEtu() {
         return etu;
@@ -74,11 +87,13 @@ public class Requetes {
             Random rand = new Random();
              m=rand.nextBoolean();
              if (m==true){
+                 rand = new Random();
                  i = rand.nextInt(daoJava.getCount());
                  etu=daoJava.GetAlea(i);
                  matiere=MATIERE2;
                  trouve = true;
              }else{
+                 rand = new Random();
                  i = rand.nextInt(daoBD.getCount());
                  etu=daoBD.GetAlea(i);
                  trouve = true;
@@ -90,7 +105,7 @@ public class Requetes {
         }
 
         
-        if (matiere.equalsIgnoreCase(MATIERE2)) {
+        if (matiere.equalsIgnoreCase(MATIERE2)&& trouve==false) {
             try {
 
              etu=daoJava.GetEtu(etu);
@@ -153,7 +168,15 @@ public class Requetes {
             return laListe;
      
     }
+    public void modifEtu() throws SQLException{
+        if (matiere.equalsIgnoreCase(MATIERE2)) {
+                     daoJava.modifNote(etu);
+                
+            } else {
+               daoBD.modifNote(etu);                
 
+            }
+    }
     public  String getMatiere() {
         return Requetes.matiere.toUpperCase();
     }
