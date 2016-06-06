@@ -21,30 +21,21 @@
 	%>
 	<div>
 		
-                        <table>
+                       <table>
                         
-                        <tr>
-                            <td>Nom</td>
-                            <%for(Etudiant e : laListe){%>
-                            <tr> <% out.print(e.getNom());%></tr>
-                            <%}%>
-                        </tr>
-                        
-                        <tr>
-                            <td>Prenom</td>
-                            <%for(Etudiant e : laListe){%>
-                            <tr> <% out.print(e.getPrenom());%></tr>
-                            <%}%>
-                        </tr>
-                        
-                        <tr>
-                            <td>Moyenne</td>
-                            <%for(Etudiant e : laListe){%>
-                            <tr> <% out.print(e.getNote());%></tr>
-                            <%}%>
-                        </tr>
+                            <tr>
+                                <th>Nom</th><th>Prenom</th><th>Note</th>
+                                <%for(Etudiant e : laListe){%>
+                            <tr><td><% out.print(e.getNom());%></td>
+                                <td><% out.print(e.getPrenom());%></td>
+                                <td><% out.print(e.getNote());}%></td>
+                            </tr>
+                                    
+                                
+                            </tr>
                             
                         </table>
+                       
                        
 			
                  <%--   <p>Nom : ${ etudiant.nom }</p>

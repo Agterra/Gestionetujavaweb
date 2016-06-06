@@ -18,7 +18,7 @@
                     <label for="nom">Prenom Etudiant <span class="requis">*</span></label>
                     <input type="text" id="nom" name="prenom" value="" size="15" maxlength="15" />
                     <br />
-                    <label for="nom">Matiére <span class="requis">*</span></label>
+                    <label for="nom">Matière <span class="requis">*</span></label>
                     <input type="text" id="nom" name="mat" value="" size="15" maxlength="15" />
                     <br />
                  
