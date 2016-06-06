@@ -43,19 +43,11 @@ public class RequeteNotes extends HttpServlet {
             // ou response.sendRedirect("/erreur.jsp");
         }
         
-        if(nom.equalsIgnoreCase("?")){
-            
-        }
-        if(prenom.equalsIgnoreCase("?")){
-            
-        }
-        if(matiere.equalsIgnoreCase("?")){
-            
-        }
+       
 
         Requetes req;
         req = new Requetes(nom, prenom, matiere);
-        int result = Requetes.rechEtu();
+        int result = req.rechEtu();
         Etudiant etudiant = req.getEtu();
         
 

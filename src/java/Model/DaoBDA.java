@@ -36,11 +36,11 @@ public class DaoBDA {
     Etudiant tmp= new Etudiant();
          String requete = "select nom,prenom,note from BDA_G2S3 where upper(nom) like ? and upper(prenom) like ? ";
          PreparedStatement pstmt = connexion.prepareStatement(requete);
-         pstmt.setString(1, "%"+etu.getNom().toUpperCase()+"&");
-        pstmt.setString(2, "%"+etu.getPrenom().toUpperCase()+"&");
+         pstmt.setString(1, "%"+etu.getNom().toUpperCase()+"%");
+        pstmt.setString(2, "%"+etu.getPrenom().toUpperCase()+"%");
         
         ResultSet rset = pstmt.executeQuery();
-       
+       //System.out.println("aa"+rset);
         while (rset.next()) {       // traitement du résulat
             
             String nom = rset.getString(1);

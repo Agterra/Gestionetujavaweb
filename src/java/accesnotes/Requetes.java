@@ -46,7 +46,7 @@ public class Requetes {
         return etu;
     }
 
-    public static int rechEtu() {
+    public  int rechEtu() {
 
         if (erreur_matiere == true) {
             return ERREUR_MATIERE;
@@ -63,11 +63,13 @@ public class Requetes {
              if (m==true){
                  i = rand.nextInt(daoJava.getCount());
                  etu=daoJava.GetAlea(i);
+                 matiere=MATIERE2;
                  trouve = true;
              }else{
                  i = rand.nextInt(daoBD.getCount());
                  etu=daoBD.GetAlea(i);
                  trouve = true;
+                 matiere=MATIERE1;
              }
          } catch (SQLException e) {
                 System.out.println("Erreur: " + e.getMessage());
@@ -78,8 +80,8 @@ public class Requetes {
         if (matiere.equalsIgnoreCase(MATIERE2)) {
             try {
 
-             daoJava.GetEtu(etu);
-             System.out.println("aa " + etu.getNote());
+             etu=daoJava.GetEtu(etu);
+            // System.out.println("aa " + etu.getNote());
                 if(etu!=null){
                     trouve = true;
                }
@@ -89,7 +91,7 @@ public class Requetes {
         } else {
             try {
                    
-               daoBD.GetEtu(etu);
+               etu=daoBD.GetEtu(etu);
                 
                if(etu!=null){
                     trouve = true;
@@ -107,7 +109,7 @@ public class Requetes {
         }
     }
 
-    public static double getMoyenne() {
+    public  double getMoyenne() {
         /* calcul et renvoi de la moyenne */
         double moyenne=0;
         double tot = 0;
@@ -121,13 +123,13 @@ public class Requetes {
         }catch(Exception e){
             System.out.println("Erreur: " + e.getMessage());
         }
-   //     moyenne = (int) ((tot / nombre) * 100 + 0.5) / 100.0;
+      moyenne = (int) ( moyenne * 100 + 0.5) / 100.0;
 
         return moyenne;
 
     }
 
-    public static String getMatiere() {
+    public  String getMatiere() {
         return Requetes.matiere.toUpperCase();
     }
 } // fin classe Requetes

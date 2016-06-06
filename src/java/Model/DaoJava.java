@@ -27,29 +27,30 @@ public class DaoJava {
         this.connexion = connexion;
     }
 
-    public void GetEtu(Etudiant etu) throws SQLException {
-
-        String requete = "select * from JAVA_WEB_G2S3 where upper(nom) like ? and upper(prenom) like ? ";
-        PreparedStatement pstmt = connexion.prepareStatement(requete);
-        pstmt.setString(1, "%" + etu.getNom().toUpperCase() + "&");
-        pstmt.setString(2, "%" + etu.getPrenom().toUpperCase() + "&");
-
+   public Etudiant GetEtu(Etudiant etu) throws SQLException {    
+    Double note=1.1;
+    Etudiant tmp= new Etudiant();
+         String requete = "select nom,prenom,note from JAVA_WEB_G2S3 where upper(nom) like ? and upper(prenom) like ? ";
+         PreparedStatement pstmt = connexion.prepareStatement(requete);
+         pstmt.setString(1, "%"+etu.getNom().toUpperCase()+"%");
+        pstmt.setString(2, "%"+etu.getPrenom().toUpperCase()+"%");
+        
         ResultSet rset = pstmt.executeQuery();
-
+       //System.out.println("aa"+rset);
         while (rset.next()) {       // traitement du résulat
-
+            
             String nom = rset.getString(1);
             String prenom = rset.getString(2);
-            double note = rset.getDouble(3);
-            etu.setNom(nom);
-            etu.setPrenom(prenom);
-            etu.setNote(note);
-            System.out.println("aa " + nom);
+             note = rset.getDouble(3);
+           tmp.setNom(nom); 
+            tmp.setPrenom(prenom); 
+             tmp.setNote(note); 
+           System.out.println("aaaaaa "+note);
         }
-
+         
         rset.close();
         pstmt.close();
-
+        return tmp;
     }
 
     public double getMoy() throws SQLException {
