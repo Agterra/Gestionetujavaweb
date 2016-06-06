@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import notes.Etudiant;
+import static notes.RequeteAdmin.ERROR;
+import static notes.RequeteAdmin.laListe;
 
 public class Requetes {
 
@@ -25,8 +27,19 @@ public class Requetes {
     public static final int ERROR = -1;
     private static DaoJava daoJava;
     private static DaoBDA daoBD;
-    public static List<Etudiant> listeEtudiants1;
-    public static List<Etudiant> listeEtudiants2;
+   
+    public static List<Etudiant> laListe;
+
+    public Requetes(String matiere) {
+         this.matiere = matiere;
+         try {
+
+            daoJava = new DaoJava(SourceOracleDAO.getSource());
+            daoBD = new DaoBDA(SourceOracleDAO.getSource());
+        } catch (SQLException e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+    }
 
     public Requetes(String nom, String prenom, String matiere) {
         etu = new Etudiant(nom, prenom, 0.0); // en entrée
@@ -127,6 +140,18 @@ public class Requetes {
 
         return moyenne;
 
+    }
+    public List<Etudiant> GetListEtu() throws SQLException{
+        laListe=new ArrayList<Etudiant>();
+            if (matiere.equalsIgnoreCase(MATIERE2)) {
+                     laListe= daoJava.lireLesEtu();
+                
+            } else {
+               laListe= daoBD.lireLesEtu();                
+
+            }
+            return laListe;
+     
     }
 
     public  String getMatiere() {

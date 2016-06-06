@@ -16,7 +16,7 @@
 	<%--<p class="info">${ message }</p>--%>
         <%
 //Alors, normalement on ne fait pas attribute, on passe par une liste qu'on déclare dans requete
-                List<Etudiant> laListe =
+                List<Etudiant> laListe = (List<Etudiant>)request.getAttribute("laListe");
                 
 	%>
 	<div>

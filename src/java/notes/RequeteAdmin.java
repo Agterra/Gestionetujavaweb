@@ -3,7 +3,7 @@ package notes;
 import Model.DaoBDA;
 import Model.DaoJava;
 import accesnotes.Requetes;
-import static accesnotes.Requetes.MATIERE2;
+
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -55,42 +55,27 @@ public class RequeteAdmin extends HttpServlet {
         int result=OK;
 
         Requetes req;
-       try{
-        if (matiere.equalsIgnoreCase(MATIERE2)) {
-                try {
-
-                 laListe= daoJava.lireLesEtu();
-
-                } catch (SQLException e) {
-                    System.out.println("Erreur: " + e.getMessage());
-                }
-        } else {
-            try {
-                   
-                laListe= daoBda.lireLesEtu();                
-              
-               
-            } catch (Exception e) {
-                System.out.println("Erreur: " + e.getMessage());
+        req=new Requetes(matiere);
+        try{
+        laListe=req.GetListEtu();
+        if(laListe.isEmpty()){
+            result=ERROR ;
+              erreur = "Erreur - liste vide.";
             }
+        }catch (Exception e){
+            result=ERROR ;
+              erreur = "Erreur-V3"+e.getMessage();
         }
-           
-            if(laListe.isEmpty()){
-                result=ERROR;
-                erreur="Liste vide";
-            }
-
+      
             if (result != OK) {
-               
+
                 request.setAttribute("erreur", erreur);
                 this.getServletContext().getRequestDispatcher("/erreur.jsp").forward(request, response);
             }else {
-                request.setAttribute("etudiant", laListe);
+                request.setAttribute("laListe", laListe);
                 this.getServletContext().getRequestDispatcher("/resultatAdmin.jsp").forward(request, response);
             }
         
-        } catch (Exception ex) {
-            Logger.getLogger(RequeteNotes.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
     }
 }

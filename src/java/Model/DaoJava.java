@@ -71,26 +71,24 @@ public class DaoJava {
      public  List<Etudiant> lireLesEtu()throws SQLException{
        List<Etudiant> laListe = new ArrayList<>();
        Etudiant temp = new Etudiant();
-       try{
+       
          String requete = "select * from JAVA_WEB_G2S3"  ;
         PreparedStatement pstmt = connexion.prepareStatement(requete);
+        System.out.println("aa");
           ResultSet rset = pstmt.executeQuery();
            while(rset.next()) { // traitement du résulat
                 String nomEtu = rset.getString(1);
                 String PrenomEtu = rset.getString(2);
                 double noteEtu = rset.getDouble(3);
-                temp.setNom(nomEtu);
-                temp.setPrenom(PrenomEtu);
-                temp.setNote(noteEtu);
+                 temp = new Etudiant(nomEtu,PrenomEtu,noteEtu);
+                 System.out.println(temp);
                 laListe.add(temp);
             }
             rset.close();
             pstmt.close();
        
          
-               }catch(Exception e){
-                   System.out.println("Erreur: "+e.getMessage());
-               }
+        
        return laListe;
    }
      public int getCount()throws SQLException{
