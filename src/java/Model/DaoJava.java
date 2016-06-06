@@ -102,7 +102,7 @@ public class DaoJava {
            }
            return nb;
      }
-     public void GetAlea(int i) throws SQLException {
+     public Etudiant GetAlea(int i) throws SQLException {
           Etudiant temp = new Etudiant();
           int cont=0;
         String requete = "select * from JAVA_WEB_G2S3  ";
@@ -124,6 +124,6 @@ public class DaoJava {
 
         rset.close();
         pstmt.close();
-
+        return temp;
     }
 }

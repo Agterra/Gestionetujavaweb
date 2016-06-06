@@ -107,7 +107,7 @@ public class DaoBDA {
            }
            return nb;
      }
-     public void GetAlea(int i) throws SQLException {
+     public Etudiant GetAlea(int i) throws SQLException {
           Etudiant temp = new Etudiant();
           int cont=0;
         String requete = "select * from BDA_G2S3  ";
@@ -126,9 +126,9 @@ public class DaoBDA {
             temp.setNote(note);
             //System.out.println("aa " + nom);
         }
-
+        
         rset.close();
         pstmt.close();
-
+           return temp;
     }
 }

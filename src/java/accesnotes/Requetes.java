@@ -52,8 +52,9 @@ public class Requetes {
             return ERREUR_MATIERE;
         }
         /* Recherche étudiant */
+        
         boolean trouve = false;
-        if (etu.getNom()=="?" && etu.getPrenom()=="?"){
+        if (etu.getNom().equalsIgnoreCase("?") && etu.getPrenom().equalsIgnoreCase("?")){
          try{
             int i;
             boolean m; 
@@ -61,11 +62,11 @@ public class Requetes {
              m=rand.nextBoolean();
              if (m==true){
                  i = rand.nextInt(daoJava.getCount());
-                 daoJava.GetAlea(i);
+                 etu=daoJava.GetAlea(i);
                  trouve = true;
              }else{
                  i = rand.nextInt(daoBD.getCount());
-                 daoBD.GetAlea(i);
+                 etu=daoBD.GetAlea(i);
                  trouve = true;
              }
          } catch (SQLException e) {
