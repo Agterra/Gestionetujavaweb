@@ -30,7 +30,7 @@
                         <p>Note : ${ etudiant.note } </p>     --%>
 		</fieldset>
         </div>
-<p><br> <a href="demande.jsp">Cliquez ici</a> pour retourner au formulaire de demande.
+<p><br> <a href="index.jsp">Cliquez ici</a> pour retourner à l'accueuil.
 </p>
   </body>
 </html>
