@@ -1,0 +1,25 @@
+﻿Revert "Merge remote-tracking branch 'origin/master'"
+
+This reverts commit e8fca03be330491380b72999a510f2859e2b1b2c, reversing
+changes made to 8536642b9c641d35a210cc361a49f053a28909e5.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   build/web/WEB-INF/classes/accesnotes/Requetes.class
+#	modified:   build/web/WEB-INF/classes/notes/RequeteAdminMaj.class
+#	modified:   build/web/erreur.jsp
+#	modified:   build/web/resultatAdmin.jsp
+#	modified:   nbproject/private/private.xml
+#	modified:   src/java/accesnotes/Requetes.java
+#	modified:   web/erreur.jsp
+#	modified:   web/resultatAdmin.jsp
+#
+# Changes not staged for commit:
+#	deleted:    build/web/WEB-INF/lib/javaee-web-api-7.0.jar
+#	deleted:    build/web/WEB-INF/lib/ojdbc7.jar
+#
+
