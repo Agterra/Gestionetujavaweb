@@ -8,6 +8,8 @@ import accesnotes.Requetes;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +41,7 @@ public class RequeteAdminMaj extends HttpServlet {
         String nom = request.getParameter("NomE");
         String prenom = request.getParameter("PrenomE");
         Double note = Double.parseDouble(request.getParameter("note"));
-       // System.out.println(login+" "+mdp+" "+matiere+" ");
+        System.out.println(login+" "+mdp+" "+matiere+" ");
 
         String erreur="Erreur";
 
@@ -65,18 +67,12 @@ public class RequeteAdminMaj extends HttpServlet {
       //  result = req.rechEtu();
        if(result==OK){
             try {
-               if(req.modifEtu()==false){
-                   throw new Exception ("Etu non trouver");
-               }
+                req.modifEtu();
                 
             } catch (SQLException ex) {
                 result=ERROR;
                erreur="upade err";
                
-            }catch(Exception e){
-                result=ERROR;
-               erreur=e.getMessage();
-                
             }
        }
        Etudiant etudiant = req.getEtu();
