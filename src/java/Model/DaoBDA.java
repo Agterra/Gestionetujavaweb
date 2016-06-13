@@ -113,7 +113,7 @@ public class DaoBDA {
         ResultSet rset = pstmt.executeQuery();
 
         while (rset.next()&& cont<=i) {       // traitement du résulat
-
+            cont++;
             String nom = rset.getString(1);
             String prenom = rset.getString(2);
             double note = rset.getDouble(3);

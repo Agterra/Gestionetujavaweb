@@ -96,8 +96,9 @@ public class Requetes {
                  rand = new Random();
                  i = rand.nextInt(daoBD.getCount());
                  etu=daoBD.GetAlea(i);
-                 trouve = true;
                  matiere=MATIERE1;
+                 trouve = true;
+                 
              }
          } catch (SQLException e) {
                 System.out.println("Erreur: " + e.getMessage());
