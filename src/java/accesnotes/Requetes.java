@@ -168,14 +168,25 @@ public class Requetes {
             return laListe;
      
     }
-    public void modifEtu() throws SQLException{
+    public boolean modifEtu() throws SQLException{
         if (matiere.equalsIgnoreCase(MATIERE2)) {
+                etu =daoJava.getEtuStrict(etu);
+                if(etu!=null){
                      daoJava.modifNote(etu);
+                     return true;
+                }
                 
             } else {
-               daoBD.modifNote(etu);                
-
+             if (matiere.equalsIgnoreCase(MATIERE2)) {
+                etu =daoBD.getEtuStrict(etu);
+                if(etu!=null){
+                     daoBD.modifNote(etu);
+                     return true;
+                }
+                            
+             }
             }
+             return false;
     }
     public  String getMatiere() {
         return Requetes.matiere.toUpperCase();
