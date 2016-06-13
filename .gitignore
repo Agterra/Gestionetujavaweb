@@ -49,3 +49,5 @@ nbproject/build-impl.xml~
 *.xml
 *.properties
 /dist/
+*.xml~
+build/web/WEB-INF/lib/ojdbc7.jar
